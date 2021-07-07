@@ -1,8 +1,15 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-    res.write('<h1>I am coming</h1>')
-    res.end();
-})
+  if (req.url === '/') {
+    res.end('Home page');
+  }
+  if (req.url === '/about') {
+    res.end('About page');
+  }
+  res.end('error page');
+});
 
-server.listen(3000)
+server.listen(5000, () => {
+  console.log('server is listening on port 5000');
+});
